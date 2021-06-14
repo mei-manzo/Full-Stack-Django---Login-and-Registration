@@ -4,6 +4,7 @@ import re
 class UserManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
+        email = postData['email']
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if len(postData['first-name']) <2:
             errors["first_name"]="First name should be at least 2 characters"
@@ -11,17 +12,19 @@ class UserManager(models.Manager):
             errors["last_name"]="Last name should be at least 2 characters"
         if not EMAIL_REGEX.match(postData['email']):             
             errors['email'] = ("Invalid email address!")
+        # if User.objects.filter(email=email) == []:
+        #     pass
         if postData['password'] != postData['confirm-password']:
             errors["password"]="Passwords do not match"
+        # if User.objects.filter(email=email) != []:
+        #     errors['email'] = ("Email is already taken.")
         return errors
+        
     def login_validator(self, postData):
         errors = {}
-        # current_user=User.objects.get.last()
         EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
         if not EMAIL_REGEX.match(postData['login-email']):             
             errors['login-email'] = ("Invalid email address!")
-        # if postData['login-password'] != current_user.password
-        #     errors["password"]="Passwords do not match"
         return errors
 
 class User(models.Model):
