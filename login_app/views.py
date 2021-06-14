@@ -31,11 +31,14 @@ def check_login(request):
 
 
 def success(request):
-    context = {
+    if request.method == "POST":
+        context = {
         "current_user" : User.objects.last()
-    }
-    return render(request, "success.html", context)
+        }
+        return render(request, "success.html", context)
+    else:
+        return redirect('/')
 
-# def logout(request):
-#     request.session.flush()
-#     return redirect('/')
+def logout(request):
+    request.session.flush()
+    return redirect('/')

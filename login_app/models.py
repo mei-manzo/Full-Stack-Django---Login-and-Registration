@@ -12,12 +12,10 @@ class UserManager(models.Manager):
             errors["last_name"]="Last name should be at least 2 characters"
         if not EMAIL_REGEX.match(postData['email']):             
             errors['email'] = ("Invalid email address!")
-        # if User.objects.filter(email=email) == []:
-        #     pass
+        if len(postData['password']) < 8:
+            errors["password"]="Password must be at least 8 characters"
         if postData['password'] != postData['confirm-password']:
             errors["password"]="Passwords do not match"
-        # if User.objects.filter(email=email) != []:
-        #     errors['email'] = ("Email is already taken.")
         return errors
         
     def login_validator(self, postData):
