@@ -1,0 +1,16 @@
+body{
+    display: flex;
+}
+
+#container-1{
+    flex:1;
+}
+
+#container-2{
+    flex:1;
+}
+
+div{
+    margin-bottom: 20px;
+}
+
