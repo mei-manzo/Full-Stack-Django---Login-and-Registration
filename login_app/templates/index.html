@@ -62,15 +62,16 @@
                 {% endfor %}
             </ul>
             {% endif %}
+            <!-- {{ error_message }} -->
             <form action="/check_login" method='POST'>
                 {% csrf_token %}
                 <div>
-                    <label for="login-email">Email:</label>
-                    <input class="login-email" type="email" name = "login-email">
+                    <label for="email">Email:</label>
+                    <input class="email" type="email" name = "email">
                 </div>
                 <div>
-                    <label for="login-password">Password:</label>
-                    <input class="login-password" type="password" name = "login-password">
+                    <label for="password">Password:</label>
+                    <input class="password" type="password" name = "password">
                 </div>
                 <input type="submit" value="Login" id = "button-2">
             </form>
