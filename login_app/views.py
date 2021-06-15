@@ -22,29 +22,20 @@ def check_registration(request):
         hashed_pw = bcrypt.hashpw(request.POST['password'].encode(), bcrypt.gensalt()).decode()
         new_user = User.objects.create(first_name = request.POST['first-name'], last_name = request.POST['last-name'], email = request.POST['email'], password = hashed_pw)
         request.session['user_id'] = new_user.id
-        return redirect('/success')
+        return redirect('/wall')
 
 def check_login(request):
     if request.method == "GET":
         return redirect ("/")
     else:
         errors = User.objects.login_validator(request.POST)
-        # email = request.POST['login-email']
-        #it's going to this line right here and finding an error
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value)
             return redirect('/')
         this_user = User.objects.filter(email=request.POST['email'])
         request.session['user_id'] = this_user[0].id
-        return redirect('/success')
-        # elif len(User.objects.filter(email=email)) < 1:
-        #     messages.error(request, "Not a registered user")
-        #     return redirect('/')
-        #     return redirect('/success')
-    # else:
-    # return redirect('/')
-
+        return redirect('/wall')
 
 def success(request):
     if 'user_id' not in request.session:

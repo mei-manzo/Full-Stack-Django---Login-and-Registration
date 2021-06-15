@@ -1,0 +1,27 @@
+header{
+    width: 100%;
+    display: flex;
+}
+
+h1{
+    flex:1;
+    margin-right: 20px;
+    margin-top: 0px;
+    width: 200px;
+}
+
+h4{
+    flex:1;
+    margin-top: 10px;
+    padding-left: 650px;
+}
+
+#logout{
+    width: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 0px;
+    padding-right: 0px;
+    padding-left: 120px;
+    flex:1;
+}

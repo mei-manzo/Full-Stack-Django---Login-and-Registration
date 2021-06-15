@@ -28,14 +28,6 @@ class UserManager(models.Manager):
             errors['password'] = "Must enter a password 8 characters or longer"
         elif bcrypt.checkpw(postData['password'].encode(), existing_user[0].password.encode()) != True:
             errors['password'] = "Email and password do not match"
-        
-        # email = postData['login-email']
-        # EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
-        # if len(postData['login-password']) < 8:
-        #     errors["login-password"]="Password must be at least 8 characters"
-        # if not EMAIL_REGEX.match(postData['login-email']):       #test if format correct      
-        #     errors["login-email"] = "Invalid email address!"
-        
         return errors
 
 class User(models.Model):
