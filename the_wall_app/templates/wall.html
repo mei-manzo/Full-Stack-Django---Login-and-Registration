@@ -21,5 +21,14 @@
     <textarea id = "content" name="content"></textarea>
     <input type="submit" value="Post a message" id = "button">
     </form>
+    <div id = "messages">
+        <h4>Activities:</h>
+        <div id = "box">
+            {% for message in all_messages %}
+            <h4>{{ message.first_name }}{{ message.last_name }}</h4><h5>{{ message.created_at }}</h5>
+            <p>{{ message.message }}</p>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html> 
