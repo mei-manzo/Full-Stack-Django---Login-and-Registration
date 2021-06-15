@@ -12,7 +12,14 @@
     <header>
         <h1>CodingDojo Wall</h1>
         <h4>Welcome {{ current_user.first_name }} </h4>
-        <a id = "logout" href="http://localhost:8000/logout">Logout</a>
+        <a id = "logout" href="http://localhost:8000/logout">Log off</a>
     </header>
+    <hr>
+    <p id = "caption">Post a message:</p>
+    <form action="/create_message" method='POST'>
+        {% csrf_token %}
+    <textarea id = "content" name="content"></textarea>
+    <input type="submit" value="Post a message" id = "button">
+    </form>
 </body>
 </html> 

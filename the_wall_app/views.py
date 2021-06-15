@@ -10,3 +10,9 @@ def wall(request):
         "current_user" : this_user[0] #grabs from session rather than database to prevent refreshing into login
     }
     return render(request, "wall.html", context)
+
+def create_message(request):
+    # this_user = User.objects.filter(id = request.session['user_id'])
+    # context = {
+    #     "current_user" : this_user[0] #grabs from session rather than database to prevent refreshing into login
+    # }
