@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'profile.css' %}">   
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Welcome to {{user.first_name}}'s profile</h1>
+    <h4>{{user.first_name}}'s Messages:</h4>
+        {% for post in user.user_messages.all %}
+        <p>{{post.message}}</p>
+        {% endfor %}
+    <h4>{{user.first_name}}'s Comments:</h4>
+        {% for comment in user.comments.all %}
+        <p>{{comment.comment}}</p>
+        {% endfor %}
+</body>
+</html> 

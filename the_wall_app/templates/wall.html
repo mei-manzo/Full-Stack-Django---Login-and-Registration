@@ -24,8 +24,25 @@
     <div id = "messages">
             {% for post in newest_first %}
             <div id = "a-post">
-                <p>{{post.poster.first_name}} {{post.poster.last_name}} - {{post.created_at}}</p>
+                <div id="title-container">
+                    <p><a href="/profile/{{post.poster.id}}">{{post.poster.first_name}} {{post.poster.last_name}}</a></p>
+                    <p> - {{post.created_at}}</p>
+                </div>
                 <p>{{post.message}}</p>
+                <div id="likes">
+                    <a href="/like/{{post.id}}">Like</a>
+                    <p>{{ post.user_likes.count }}</p>
+                </div>
+                <form action="/comment/{{post.id}}" method='POST'>
+                    {% csrf_token %}
+                    Comment: <input type="text" name="comment" id="mini-comment">
+                    <input type="submit" value='submit'>
+                </form>
+                {% for comment in post.user_comments.all %}
+                    <p id="bold" class="speech-bubble">"{{ comment.comment }}"</p>
+                    <div id="triangle"></div>
+                    <p>Posted by: {{comment.poster.first_name}} {{comment.poster.last_name}}</p>
+                {% endfor %}
             </div>
             {% endfor %}
     </div>

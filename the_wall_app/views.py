@@ -21,3 +21,20 @@ def create_message(request):
     Message.objects.create(poster=User.objects.get(id=request.session['user_id']), message=request.POST['content'])
     return redirect('/wall')
 
+def comment(request, id):
+    poster = User.objects.get(id=request.session['user_id'])
+    message = Message.objects.get(id=id)
+    Comment.objects.create(comment=request.POST['comment'], poster= poster, message = message)
+    return redirect('/wall')
+
+def profile(request, id):
+    context = {
+        'user': User.objects.get(id=id)
+    }
+    return render(request, 'profile.html', context)
+
+def like(request, id):
+    like_message = Message.objects.get(id=id) #debug this code
+    user_liking = User.objects.get(id=request.session['user_id'])
+    like_message.user_likes.add(user_liking)
+    return redirect('/wall')
