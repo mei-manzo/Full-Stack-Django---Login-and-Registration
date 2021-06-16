@@ -6,15 +6,6 @@ from pytz import timezone
 from login_app import views
 import pytz
 
-# def wall_success(request):
-#     if 'user_id' not in request.session:
-#         return redirect('/')
-#     # this_user = User.objects.filter(id = request.session['user_id'])
-#     context = {
-#         'all_messages': Message.objects.all()
-#     }
-#     return render(request, "success.html", context)
-
 def wall(request):
     if 'user_id' not in request.session:
         return redirect('/')

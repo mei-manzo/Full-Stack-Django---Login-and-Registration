@@ -11,7 +11,7 @@ from login_app.models import *
 #     # objects = UserManager()
 
 class Message(models.Model):
-    poster = models.ForeignKey(User, related_name="messages", on_delete = models.CASCADE)
+    poster = models.ForeignKey(User, related_name="user_messages", on_delete = models.CASCADE)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -19,7 +19,7 @@ class Message(models.Model):
 
 class Comment(models.Model):
     poster = models.ForeignKey(User, related_name="comments", on_delete = models.CASCADE)
-    message = models.ForeignKey(Message, related_name="comments", on_delete = models.CASCADE)
+    message = models.ForeignKey(Message, related_name="user_comments", on_delete = models.CASCADE)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now=True)
