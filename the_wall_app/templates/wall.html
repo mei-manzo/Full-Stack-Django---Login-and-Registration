@@ -22,13 +22,12 @@
     <input type="submit" value="Post a message" id = "button">
     </form>
     <div id = "messages">
-        <h4>Activities:</h>
-        <div id = "box">
-            {% for message in all_messages %}
-            <h4>{{ message.first_name }}{{ message.last_name }}</h4><h5>{{ message.created_at }}</h5>
-            <p>{{ message.message }}</p>
+            {% for post in newest_first %}
+            <div id = "a-post">
+                <p>{{post.poster.first_name}} {{post.poster.last_name}} - {{post.created_at}}</p>
+                <p>{{post.message}}</p>
+            </div>
             {% endfor %}
-        </div>
     </div>
 </body>
 </html> 

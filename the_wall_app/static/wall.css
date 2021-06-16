@@ -17,7 +17,7 @@ h1{
     flex:1;
     margin-right: 20px;
     margin-top: 0px;
-    width: 200px;
+    width: 500px;
     padding-bottom: 0px;
 }
 
@@ -25,7 +25,7 @@ h4{
     flex:1;
     margin-top: 10px;
     padding-bottom: 20px;
-    padding-left: 650px;
+    padding-left: 500px;
 }
 
 #logout{
@@ -39,11 +39,11 @@ h4{
 }
 
 #caption{
-    margin-left:100px;
+    margin-left:200px;
 }
 #content{
     width: 75%;
-    margin-left:100px;
+    margin-left:200px;
     margin-right: 200px;
     height: 100px;
 }
@@ -52,4 +52,16 @@ h4{
     margin-top: 20px;
     margin-left: 1135px;
     background-color: blue;
+}
+body{
+    background-color:cornflowerblue;
+}
+
+#a-post{
+    margin-left: 200px;
+    margin-right: 170px;
+    background-color: antiquewhite;
+    margin-bottom: 50px;
+    padding: 10px;
+    
 }
